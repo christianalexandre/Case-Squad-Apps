@@ -1,36 +1,28 @@
 package com.example.case_squad_apps
 
 import android.os.Bundle
+import androidx.appcompat.app.AppCompatActivity
+import androidx.viewpager.widget.ViewPager
+import com.example.case_squad_apps.fragments.FavouritesFragment
+import com.example.case_squad_apps.fragments.ListFragment
+import com.example.case_squad_apps.fragments.ViewPagerAdapter
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
-import com.google.android.material.tabs.TabLayout
-import androidx.viewpager.widget.ViewPager
-import androidx.appcompat.app.AppCompatActivity
-import android.view.Menu
-import android.view.MenuItem
-import com.example.case_squad_apps.ui.main.SectionsPagerAdapter
-import com.example.case_squad_apps.databinding.ActivityMainBinding
+import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_list.*
 
 class MainActivity : AppCompatActivity() {
-
-    private lateinit var binding: ActivityMainBinding
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        setContentView(R.layout.activity_main)
+        setUpTabs()
+    }
 
-        binding = ActivityMainBinding.inflate(layoutInflater)
-        setContentView(binding.root)
-
-        val sectionsPagerAdapter = SectionsPagerAdapter(this, supportFragmentManager)
-        val viewPager: ViewPager = binding.viewPager
-        viewPager.adapter = sectionsPagerAdapter
-        val tabs: TabLayout = binding.tabs
-        tabs.setupWithViewPager(viewPager)
-        val fab: FloatingActionButton = binding.fab
-
-        fab.setOnClickListener { view ->
-            Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
-                .setAction("Action", null).show()
-        }
+    private fun setUpTabs() {
+        val adapter = ViewPagerAdapter(supportFragmentManager)
+        adapter.addFragment(ListFragment(), "Listagem")
+        adapter.addFragment(FavouritesFragment(), "Favoritos")
+        view_pager.adapter = adapter
+        tabs.setupWithViewPager(view_pager)
     }
 }
