@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun setUpTabs() {
         val adapter = ViewPagerAdapter(supportFragmentManager)
-        adapter.addFragment(ListFragment(), "Listagem")
+        adapter.addFragment(ListFragment(), "Paises")
         adapter.addFragment(FavouritesFragment(), "Favoritos")
         view_pager.adapter = adapter
         tabs.setupWithViewPager(view_pager)

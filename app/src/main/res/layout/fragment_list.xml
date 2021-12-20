@@ -16,7 +16,8 @@
         android:layout_marginTop="14dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        android:hint="Sigla do pais"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recView"

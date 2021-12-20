@@ -8,20 +8,26 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.case_squad_apps.R
 import com.example.case_squad_apps.model.MyDataItem
+import com.example.case_squad_apps.model.pais.PaisItem
 import kotlinx.android.synthetic.main.pais_item.view.*
+import org.w3c.dom.Text
 
-class PostsAdapter(
+class PaisesAdapter(
     private val context: Context,
-    private val userList: List<MyDataItem>
-) : RecyclerView.Adapter<PostsAdapter.ViewHolder>() {
+    private val paisList: List<PaisItem>
+) : RecyclerView.Adapter<PaisesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        var userId: TextView
-        var title: TextView
+        var nomePais: TextView
+        var regiao: TextView
+        var idioma: TextView
+        var moeda: TextView
 
         init {
-            userId = itemView.nomePais
-            title = itemView.nomeContinente
+            nomePais = itemView.nomePais
+            regiao = itemView.nomeContinente
+            idioma = itemView.idioma
+            moeda = itemView.moeda
         }
     }
 
@@ -32,12 +38,14 @@ class PostsAdapter(
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.userId.text = userList[position].userId.toString()
-        holder.title.text = userList[position].title
+        holder.nomePais.text = paisList[position].nome.abreviado + " (${paisList[position].id.ISO_3166_1_ALPHA_2})"
+        holder.regiao.text = paisList[position].localizacao.regiao.nome
+        holder.idioma.text = paisList[position].linguas[0].nome
+        holder.moeda.text = paisList[position].unidades_monetarias[0].nome
     }
 
     override fun getItemCount(): Int {
-        return userList.size
+        return paisList.size
     }
 
 }

@@ -1,23 +1,18 @@
 package com.example.case_squad_apps.fragments
 
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.Button
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.case_squad_apps.R
 import com.example.case_squad_apps.api.ApiInterface
-import com.example.case_squad_apps.fragments.adapter.ListaPaisesAdapter
+import com.example.case_squad_apps.fragments.adapter.PaisesAdapter
 import com.example.case_squad_apps.fragments.adapter.PostsAdapter
-import com.example.case_squad_apps.http.HttpGet
 import com.example.case_squad_apps.model.MyDataItem
-import com.example.case_squad_apps.model.Paises
-import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.example.case_squad_apps.model.pais.PaisItem
 import com.google.android.material.snackbar.Snackbar
 import kotlinx.android.synthetic.main.fragment_list.*
 import retrofit2.Call
@@ -25,14 +20,13 @@ import retrofit2.Callback
 import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
-import java.lang.StringBuilder
 
-const val BASE_URL = "https://jsonplaceholder.typicode.com/"
+const val BASE_URL = "https://servicodados.ibge.gov.br/"
 
 class ListFragment : Fragment() {
 
-    lateinit var postsAdapter: PostsAdapter
     lateinit var linearLayoutManager: LinearLayoutManager
+    lateinit var paisesAdapter: PaisesAdapter
 
      override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -67,22 +61,22 @@ class ListFragment : Fragment() {
 
         val retrofitData = retrofitBuilder.getData()
 
-        retrofitData.enqueue(object : Callback<List<MyDataItem>?> {
+        retrofitData.enqueue(object : Callback<List<PaisItem>?> {
             override fun onResponse(
-                call: Call<List<MyDataItem>?>,
-                response: Response<List<MyDataItem>?>
+                call: Call<List<PaisItem>?>,
+                response: Response<List<PaisItem>?>
             ) {
                 val responseBody = response.body()!!
 
-                val PostsAdapter = PostsAdapter(requireActivity(), responseBody)
+                val PaisesAdapter = PaisesAdapter(requireActivity(), responseBody)
 
-                PostsAdapter.notifyDataSetChanged()
+                PaisesAdapter.notifyDataSetChanged()
 
-                recView.adapter = PostsAdapter
+                recView.adapter = PaisesAdapter
 
             }
 
-            override fun onFailure(call: Call<List<MyDataItem>?>, t: Throwable) {
+            override fun onFailure(call: Call<List<PaisItem>?>, t: Throwable) {
                 Log.d("MainActivity", "onFail: "+t.message)
             }
         })
