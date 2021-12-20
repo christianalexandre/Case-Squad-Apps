@@ -7,10 +7,8 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.case_squad_apps.R
-import com.example.case_squad_apps.model.MyDataItem
 import com.example.case_squad_apps.model.pais.PaisItem
 import kotlinx.android.synthetic.main.pais_item.view.*
-import org.w3c.dom.Text
 
 class PaisesAdapter(
     private val context: Context,

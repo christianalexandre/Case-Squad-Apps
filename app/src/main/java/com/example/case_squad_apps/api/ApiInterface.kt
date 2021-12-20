@@ -6,6 +6,6 @@ import retrofit2.http.GET
 
 interface ApiInterface {
 
-    @GET("api/v1/paises/")
+    @GET(" ")
     fun getData(): Call<List<PaisItem>>
 }
