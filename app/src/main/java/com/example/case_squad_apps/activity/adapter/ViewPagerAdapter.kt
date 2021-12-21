@@ -1,4 +1,4 @@
-package com.example.case_squad_apps.fragments.adapter
+package com.example.case_squad_apps.activity.adapter
 
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.FragmentManager

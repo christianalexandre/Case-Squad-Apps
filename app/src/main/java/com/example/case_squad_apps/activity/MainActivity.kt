@@ -1,10 +1,11 @@
-package com.example.case_squad_apps
+package com.example.case_squad_apps.activity
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.example.case_squad_apps.R
 import com.example.case_squad_apps.fragments.FavouritesFragment
 import com.example.case_squad_apps.fragments.ListFragment
-import com.example.case_squad_apps.fragments.adapter.ViewPagerAdapter
+import com.example.case_squad_apps.activity.adapter.ViewPagerAdapter
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {

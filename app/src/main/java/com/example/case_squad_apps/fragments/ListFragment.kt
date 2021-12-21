@@ -10,7 +10,7 @@ import android.widget.Toast
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.case_squad_apps.R
 import com.example.case_squad_apps.api.ApiInterface
-import com.example.case_squad_apps.fragments.adapter.PaisesAdapter
+import com.example.case_squad_apps.fragments.adapter.ListAdapter
 import com.example.case_squad_apps.model.pais.PaisItem
 import kotlinx.android.synthetic.main.fragment_list.*
 import retrofit2.Call
@@ -22,7 +22,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 class ListFragment : Fragment() {
 
     lateinit var linearLayoutManager: LinearLayoutManager
-    lateinit var paisesAdapter: PaisesAdapter
+    lateinit var listAdapter: ListAdapter
 
      override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -39,6 +39,8 @@ class ListFragment : Fragment() {
         recView.setHasFixedSize(true)
         linearLayoutManager = LinearLayoutManager(activity)
         recView.layoutManager = linearLayoutManager
+
+
 
         fab.setOnClickListener {
             if(CodigoPais.text.toString().trim().equals("")){
@@ -71,7 +73,7 @@ class ListFragment : Fragment() {
                         .show()
                 } else {
                     val responseBody = response.body()!!
-                    val PaisesAdapter = PaisesAdapter(requireActivity(), responseBody)
+                    val PaisesAdapter = ListAdapter(requireActivity(), responseBody)
                     PaisesAdapter.notifyDataSetChanged()
                     recView.adapter = PaisesAdapter
                 }
