@@ -40,8 +40,6 @@ class ListFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(activity)
         recView.layoutManager = linearLayoutManager
 
-
-
         fab.setOnClickListener {
             if(CodigoPais.text.toString().trim().equals("")){
                 var BASE_URL = "https://servicodados.ibge.gov.br/api/v1/paises/"

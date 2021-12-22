@@ -4,7 +4,9 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
 import com.example.case_squad_apps.R
 import com.example.case_squad_apps.activity.adapter.DetailAdapter
 import com.example.case_squad_apps.api.ApiInterface
@@ -47,6 +49,6 @@ class DetailActivity : AppCompatActivity() {
             PaisDetalhes(chave = "Área", valor = areaD.toString()),
             PaisDetalhes(chave = "Histórico", valor = historicoD.toString())
             ))
-    }
 
+    }
 }

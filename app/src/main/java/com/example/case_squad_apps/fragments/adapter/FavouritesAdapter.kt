@@ -18,10 +18,10 @@ import android.widget.Toast
 import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.case_squad_apps.model.paisDAO.PaisDAO
 
-class ListAdapter(
+class FavouritesAdapter(
     private val context: Context,
     private val paisList: List<PaisItem>
-) : RecyclerView.Adapter<ListAdapter.ViewHolder>() {
+) : RecyclerView.Adapter<FavouritesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
         var nomePais: TextView
@@ -67,7 +67,6 @@ class ListAdapter(
             override fun onLongClick(v: View?): Boolean {
                 val dao = PaisDAO()
                 dao.adiciona(paisList[position])
-                println("==============="+dao.buscarPaises())
                 Toast.makeText(context, "Adicionado aos favoritos", Toast.LENGTH_LONG)
                     .show()
                 return false
