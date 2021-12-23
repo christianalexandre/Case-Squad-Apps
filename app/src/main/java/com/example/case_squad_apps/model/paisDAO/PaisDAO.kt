@@ -8,6 +8,10 @@ class PaisDAO {
         paises.add(pais)
     }
 
+    fun deleta(position: Int){
+        paises.removeAt(position)
+    }
+
     fun buscarPaises() : List<PaisItem>{
         return paises.toList()
     }

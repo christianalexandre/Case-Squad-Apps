@@ -12,10 +12,7 @@ import com.example.case_squad_apps.activity.DetailActivity
 import com.example.case_squad_apps.model.pais.PaisItem
 import kotlinx.android.synthetic.main.list_item.view.*
 import android.annotation.SuppressLint
-import android.util.Log
-import android.view.Gravity
 import android.widget.Toast
-import androidx.recyclerview.widget.ItemTouchHelper
 import com.example.case_squad_apps.model.paisDAO.PaisDAO
 
 class FavouritesAdapter(
@@ -24,12 +21,14 @@ class FavouritesAdapter(
 ) : RecyclerView.Adapter<FavouritesAdapter.ViewHolder>() {
 
     class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        // declaração das variaveis
         var nomePais: TextView
         var regiao: TextView
         var idioma: TextView
         var moeda: TextView
 
         init {
+            // inicialização das variaveis
             nomePais = itemView.nomePais
             regiao = itemView.nomeContinente
             idioma = itemView.idioma
@@ -46,11 +45,14 @@ class FavouritesAdapter(
 
 
     override fun onBindViewHolder(holder: ViewHolder, @SuppressLint("RecyclerView") position: Int) {
+        // seta as variaveis na TextView correspondente
         holder.nomePais.text = paisList[position].nome.abreviado + "(${paisList[position].id.ISO_3166_1_ALPHA_2})"
         holder.regiao.text = paisList[position].localizacao.regiao.nome
         holder.idioma.text = paisList[position].linguas[0].nome
         holder.moeda.text = paisList[position].unidades_monetarias[0].nome
+        // define o evento onClick
         holder.itemView.setOnClickListener(object : View.OnClickListener {
+            // chama a DetailActivity passando na intenção os parametros a serem impressos
             override fun onClick(v: View?) {
                 val i = Intent(v!!.context, DetailActivity::class.java)
                 i.putExtra("pais", paisList[position].nome.abreviado)
@@ -63,11 +65,13 @@ class FavouritesAdapter(
                 v.context.startActivity(i)
             }
         })
+        // define evento LongClick
         holder.itemView.setOnLongClickListener(object : View.OnLongClickListener {
+            // remove o item correspondente ao LongClick na classe PaisDAO
             override fun onLongClick(v: View?): Boolean {
                 val dao = PaisDAO()
-                dao.adiciona(paisList[position])
-                Toast.makeText(context, "Adicionado aos favoritos", Toast.LENGTH_LONG)
+                dao.deleta(position)
+                Toast.makeText(context, "Removido dos favoritos", Toast.LENGTH_SHORT)
                     .show()
                 return false
             }

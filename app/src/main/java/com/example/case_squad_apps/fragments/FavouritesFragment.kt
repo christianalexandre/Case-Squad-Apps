@@ -8,11 +8,12 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.case_squad_apps.R
 import com.example.case_squad_apps.fragments.adapter.FavouritesAdapter
-import com.example.case_squad_apps.fragments.adapter.ListAdapter
 import com.example.case_squad_apps.model.paisDAO.PaisDAO
 import kotlinx.android.synthetic.main.fragment_favourites.*
-import kotlinx.android.synthetic.main.fragment_list.*
 
+/*
+    Classe responsável por recuperar os paises em lista no arquivo PaisDAO para impressão na tela.
+ */
 class FavouritesFragment : Fragment() {
 
     lateinit var linearLayoutManager: LinearLayoutManager

@@ -1,25 +1,18 @@
 package com.example.case_squad_apps.activity
 
 import android.os.Bundle
-import android.util.Log
-import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
-import androidx.recyclerview.widget.ItemTouchHelper
 import androidx.recyclerview.widget.LinearLayoutManager
-import androidx.recyclerview.widget.RecyclerView
 import com.example.case_squad_apps.R
 import com.example.case_squad_apps.activity.adapter.DetailAdapter
-import com.example.case_squad_apps.api.ApiInterface
-import com.example.case_squad_apps.model.pais.PaisItem
 import com.example.case_squad_apps.model.paisDetalhes.PaisDetalhes
 import kotlinx.android.synthetic.main.activity_detail.*
-import kotlinx.android.synthetic.main.fragment_list.*
-import retrofit2.Call
-import retrofit2.Callback
-import retrofit2.Response
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
 
+/*
+    Essa classe é chamada a partir da Main quando o usuário clica em cima de um dos paises da lista.
+    A main por sua vez envia junto com a Intent os parâmetros do pais para que essa Activity chame
+    o adapter com esses valores.
+ */
 class DetailActivity : AppCompatActivity() {
 
     lateinit var linearLayoutManager: LinearLayoutManager

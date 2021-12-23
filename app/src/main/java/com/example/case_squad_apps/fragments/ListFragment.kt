@@ -19,6 +19,12 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
+/*
+    Classe responsável por fazer a requisição no endpoint e manipular o objeto, para depois chamar
+    o adapter e imprimir em lista os paises.
+    Caso o usuário não insira nada no EditText a requisição é feita no endpoint paises, porém
+    se o usuário desejar é possível fazer a requisição e retornar apenas o pais desejado.
+ */
 class ListFragment : Fragment() {
 
     lateinit var linearLayoutManager: LinearLayoutManager
@@ -40,7 +46,9 @@ class ListFragment : Fragment() {
         linearLayoutManager = LinearLayoutManager(activity)
         recView.layoutManager = linearLayoutManager
 
+        // botão flutuante responsável pela requisição
         fab.setOnClickListener {
+            // checa se o usuário utilizou o EditText
             if(CodigoPais.text.toString().trim().equals("")){
                 var BASE_URL = "https://servicodados.ibge.gov.br/api/v1/paises/"
                 getData(BASE_URL)
@@ -52,6 +60,8 @@ class ListFragment : Fragment() {
         }
     }
 
+    // Realiza a requisição e chamar o adapter para impressão em tela
+    // Essa função deveria estar externa a esse arquivo
     private fun getData(BASE_URL: String) {
         val retrofitBuilder = Retrofit.Builder()
             .addConverterFactory(GsonConverterFactory.create())
