@@ -13,15 +13,15 @@ requisitos citados.
   - Listar os países: nome, continente, idioma e informações que considerar interessante;
   - Prepare o item acima com foco em navegar para diferentes telas;
 * Criar uma Tela de Detalhes onde a mesma deve contemplar:
-  - Descrição do país e indicadores (esse item está em um endpoint diferente do primeiro,
+  - Descrição do país e <s>indicadores</s> (esse item está em um endpoint diferente do primeiro,
 atenção nesse ponto);
 * Criar uma Tela de Favoritos onde você vai:
-  - Salvar e exibir as informações acima localmente;
+  - Salvar e exibir as informações acima <s>localmente</s>;
 * Diferencial:
   - Programação assíncrona;
   - Clareza na organização de componentes utilizados para construir a tela;
   - Preocupação com a UI/UX da aplicação;
-  - Teste Automatizado de alguma das funções desenvolvidas;
+  - <s>Teste Automatizado de alguma das funções desenvolvidas;</s>
 
 ## O app
 
